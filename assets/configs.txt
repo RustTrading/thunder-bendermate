@@ -1,0 +1,648 @@
+name: Binance.PRODconfig: <BinanceConfig>
+
+
+  <AutoRestartDelay>30000</AutoRestartDelay>
+  <AutoStart>true</AutoStart>
+  <MDDelayAlarm Threshold="1000" Duration="1000" MinReconnectInterval="5000"/>
+  <ExecutionDelays>
+    <AddDelay>TND1BNAdd</AddDelay>
+    <ModDelay>TND1BNMod</ModDelay>
+    <DelDelay>TND1BNDel</DelDelay>
+    <WriteSensors>true</WriteSensors>
+    <Counters>true</Counters>
+    <MaxActions>100</MaxActions>
+  </ExecutionDelays>
+
+
+<ThreadCount>2</ThreadCount>
+  <TimedEvents>
+    <Event Moment="00:00:01" Type="Start" /> 
+    <Event Moment="9999932:59:10" Type="Stop" />
+  </TimedEvents>
+
+<ExecutionRPS Requests="9"   Interval="950" />
+<RequestRPS   Requests="1100" Interval="59000" /> 
+  <MDSourceIps>51.89.153.203,51.89.144.114</MDSourceIps> 
+
+<FullLogs>false</FullLogs>
+  <SafeMode>
+    <ExecutionRPS Requests="2"   Interval="1500" />
+    <RequestRPS   Requests="600" Interval="60000" />
+    <Duration>1200000</Duration>
+    <Disable>true</Disable>
+  </SafeMode>
+<MDGlobalStale>15000</MDGlobalStale>
+<MDDefaultStale>30000</MDDefaultStale>
+
+  <Recovery Duration="60000" RequestInterval="5000" />
+  <BanMorInterval>900000</BanMorInterval>
+  <Accounts> 
+    <Account Name="BINrie16" ApiKey="2yEDx9w7hpP3FxVymTGupJ9XS67bJj1ResPjjHOxLMbyUUkvQw9Ash2PScG5qg1j" SecretKey="mr2xJw0L9xS9sZzGVJ8a83Eu4R1gDTUq1mKc0hF4FiJVJrn8uca1Nbb3EqwQY2ut" 
+             FillRatio="frbin"
+             PlacingCount="pc1bin"
+             PlacedCount="pc2bin"
+             Sent24H="s24bin"
+             SourceWsIp="51.89.153.203"
+             SourceIps="51.89.153.203,51.89.144.114"
+             Threshold24H="199000"> 
+	<ExecutionRPS Requests="9"   Interval="1000" /> <!-- max: 25/sec 200k/day -->
+   </Account>
+  </Accounts>
+<MultiAccSelector Debug="false" DisbalancePercent="30" Sent24Threshold="20" />
+
+  <VirtualAccounts>
+     <VirtualAccount Name="BINrie16PK" RealAccount="BINrie16"/>
+  </VirtualAccounts>
+
+<TradeRules Moratorium="500">
+  <UFR  TriggerValue="0.997" TriggerCondition="275" CalculatingCycle="600000" />
+  <IFER TriggerValue="0.97"  TriggerCondition="125" CalculatingCycle="600000" />
+  <GCR  TriggerValue="0.9"  TriggerCondition="125" CalculatingCycle="600000" />
+  <Indicators>
+   
+  </Indicators>
+</TradeRules>
+
+
+
+<BooksCompact>
+	<Rule Currency="BTC" MinSize="0.005" />
+	<Rule Currency="USD" MinSize="50" />
+</BooksCompact>
+
+  <Instruments>
+    <Instrument Name="ADABTC"   xBase="ADA"     xQuote="BTC" LotSize="1"/>
+    <Instrument Name="ADAUSDT"  xBase="ADA"     xQuote="USD" LotSize="1e-2"/> 
+    <Instrument Name="BTCUSDT"  xBase="BTC"     xQuote="USD" LotSize="1e-06"/>
+    <Instrument Name="ETHBTC"   xBase="ETH"     xQuote="BTC" LotSize="0.001"/>
+    <Instrument Name="ETHUSDT"  xBase="ETH"     xQuote="USD" LotSize="1e-05"/>
+    <Instrument Name="LTCUSDT"  xBase="LTC"     xQuote="USD" LotSize="1e-05"/>
+    <Instrument Name="LTCBTC"   xBase="LTC"     xQuote="BTC" LotSize="0.01"/>
+    <Instrument Name="XRPBTC"   xBase="XRP"     xQuote="BTC" LotSize="1"/>
+    <Instrument Name="XRPUSDT"  xBase="XRP"     xQuote="USD" LotSize="0.1" />
+    <Instrument Name="XMRBTC"   xBase="XMR"     xQuote="BTC" LotSize="0.001"/>
+    <Instrument Name="XMRUSDT"   xBase="XMR"     xQuote="USD" LotSize="1e-5"/>
+    <Instrument Name="DASHBTC"  xBase="DASH"    xQuote="BTC" LotSize="0.001"/>
+    <Instrument Name="DASHUSDT" xBase="DASH" xQuote="USD" LotSize="1e-05" />
+    <Instrument Name="EOSBTC"   xBase="EOS"     xQuote="BTC" LotSize="0.01"/>
+    <Instrument Name="EOSETH"   xBase="EOS"     xQuote="ETH" LotSize="0.01"/>
+    <Instrument Name="EOSUSDT"  xBase="EOS"     xQuote="USD" LotSize="1e-2" />   <!-- pointPrice = 1e-2, minOrderSize=10 USD, priceStep=0.0001 -->
+    <Instrument Name="TRXUSDT"  xBase="TRX"     xQuote="USD" LotSize="0.1" />   <!-- pointPrice = 1e-1, minOrderSize=10 USD, priceStep=0.00001 -->
+    <Instrument Name="TRXBTC" xBase="TRX" xQuote="BTC" LotSize="1" />
+    <Instrument Name="BCHABCBTC"   xBase="BCHABC"     xQuote="BTC" LotSize="0.001"/>
+    <Instrument Name="BCHABCUSDT"  xBase="BCHABC"     xQuote="USD" LotSize="1e-05"/>
+    <Instrument Name="ZECBTC" xBase="ZEC" xQuote="BTC" LotSize="0.001" />
+    <Instrument Name="ZECUSDT" xBase="ZEC" xQuote="USD" LotSize="1e-5" />
+    <Instrument Name="BNBUSDT" xBase="BNB" xQuote="USD" LotSize="0.01" />
+    <Instrument Name="BNBBTC" xBase="BNB" xQuote="BTC" LotSize="0.01" />
+    <Instrument Name="DOGEUSDT" xBase="DOGE" xQuote="USD" LotSize="1" />
+    <Instrument Name="DOGEBTC" xBase="DOGE" xQuote="BTC" LotSize="1" />
+    <Instrument Name="IOSTBTC" LotSize="1"/>
+    <Instrument Name="IOSTUSDT" LotSize="1" />
+    <Instrument Name="LINKUSDT" LotSize="0.01" />
+    <Instrument Name="LINKBTC" LotSize="1" />
+    <Instrument Name="BTCUSDC" LotSize="1e-06" />
+    <Instrument Name="ONTBTC" LotSize="0.01" />
+    <Instrument Name="ONTUSDT" LotSize="0.01" />
+    <Instrument Name="XLMBTC"   xBase="XLM"     xQuote="BTC" LotSize="1"/>
+    <Instrument Name="XLMUSDT" xBase="XLM"      xQuote="USD" LotSize="0.1" />
+    <Instrument Name="ETCBTC"   xBase="ETC"     xQuote="BTC" LotSize="0.01" />
+    <Instrument Name="ETCUSDT"  xBase="ETC"     xQuote="USD" LotSize="0.01" />
+    <Instrument Name="BTCBUSD" LotSize="1e-06" />
+  </Instruments>
+
+  <CurrencyAliases>
+    <xAlias ExchangeName="USDT" BalanceName="USD"/> 
+  </CurrencyAliases>
+
+  <Balances Threshold="1e-4" MismatchDuration="60000">
+    <Currency Name="USD"  Threshold="5" />
+    <Currency Name="ADA"  Threshold="20" />
+    <Currency Name="BCHABC"  Threshold="0.005" />
+    <Currency Name="BTC"  Threshold="0.001" />
+    <Currency Name="EOS"  Threshold="0.5" />
+    <Currency Name="ETC"  Threshold="0.1" />
+    <Currency Name="ETH"  Threshold="0.01" />
+    <Currency Name="LTC"  Threshold="0.02" />
+    <Currency Name="NEO"  Threshold="0.1" />
+    <Currency Name="QTUM" Threshold="0.1" />
+    <Currency Name="TRX"  Threshold="50" />
+    <Currency Name="XMR"  Threshold="0.05" />
+    <Currency Name="XRP"  Threshold="5" />
+  </Balances>
+
+<!--
+  <HistoryDir>/srv/history</HistoryDir> 
+  <HistoryDirectory>/srv/history</HistoryDirectory> 
+-->
+</BinanceConfig>
+
+name: HitBTC.PRODconfig: <HitBTCConfig>
+
+   <RPS Interval="1000" Requests="600" />
+
+  <AutoRestartDelay>40000</AutoRestartDelay>
+  <AutoStart>true</AutoStart>
+
+   <TimedEvents>
+      <Event Moment="00:00:00" Type="Start" /> 
+      <Event Moment="9999932:59:30" Type="Stop" />
+   </TimedEvents>
+
+  <ExecutionDelays>
+    <AddDelay>TND1HITAdd</AddDelay>
+    <ModDelay>TND1HITMod</ModDelay>
+    <DelDelay>TND1HITDel</DelDelay>
+    <WriteSensors>true</WriteSensors>
+    <Counters>true</Counters>
+    <MaxActions>500</MaxActions>
+  </ExecutionDelays>
+
+<MarketDataPool>
+<Host>10.197.5.44</Host>
+<Secondary>10.197.5.45,10.197.5.92,10.197.5.93</Secondary>
+</MarketDataPool>
+
+<ExecutionPool>
+<Host>10.197.5.44</Host>
+<Secondary>10.197.5.45,10.197.5.92,10.197.5.93</Secondary>
+</ExecutionPool> 
+
+  <PosTransferActions> </PosTransferActions>
+
+  <CurrencyAliases>
+    <Alias BalanceName="BCH" ExchangeName="BCCF" />
+    <Alias BalanceName="XRP" ExchangeName="XRP2" />
+    <Alias BalanceName="GUSD" ExchangeName="GUSD1" />
+    <Alias BalanceName="USDT" ExchangeName="USD" />
+  </CurrencyAliases> 
+
+<!--mm23-->
+  <MarketDataLogin Password="X0XnkV7KGsMXhym" Port="4501" SenderCompID="login_3536369" TargetCompID="ME" Username="user_3536369" /> -->
+
+    <Fees>
+        <Fee Account="HITrie11" FeeRule="FromQuote" TakerPercentFee="0.02" MakerPercentFee="-0.01" />
+    </Fees>
+
+ <Accounts> 
+        <Account ApiKey="uStutUgjztfYzvOrJ0m48nXSvMPROF8-" ApiSecret="t7hCvOQjHoyVAnqDcamar67ci-UUCAyr" ExchangeAccount="account_3467175" Name="HITrie11" PartyID="user_3467175">
+            <Logins>
+                <Login Password="PUOV6TmN3s8dhba" Port="4500" SenderCompID="login_3467175" TargetCompID="ME" Username="user_3467175" />
+            </Logins>
+        </Account>
+ </Accounts>
+
+  <VirtualAccounts>
+    <VirtualAccount Name="HITrie11PK" RealAccount="HITrie11" />
+  </VirtualAccounts>
+
+  <Instruments>
+    <Instrument Base="BTC" Quote="USDT" Name="BTCUSD" PointPrice="1e-08" PriceHint="1000000" PriceStep="0.01" RealPointPrice="1e-05" SizeHint="100000000"/>
+
+  </Instruments>
+
+
+</HitBTCConfig>
+name: Binance.PROD, config: <BinanceConfig>
+
+
+  <AutoRestartDelay>30000</AutoRestartDelay>
+  <AutoStart>true</AutoStart>
+  <MDDelayAlarm Threshold="1000" Duration="1000" MinReconnectInterval="5000"/>
+  <ExecutionDelays>
+    <AddDelay>TND1BNAdd</AddDelay>
+    <ModDelay>TND1BNMod</ModDelay>
+    <DelDelay>TND1BNDel</DelDelay>
+    <WriteSensors>true</WriteSensors>
+    <Counters>true</Counters>
+    <MaxActions>100</MaxActions>
+  </ExecutionDelays>
+
+
+<ThreadCount>2</ThreadCount>
+  <TimedEvents>
+    <Event Moment="00:00:01" Type="Start" /> 
+    <Event Moment="9999932:59:10" Type="Stop" />
+  </TimedEvents>
+
+<ExecutionRPS Requests="9"   Interval="950" />
+<RequestRPS   Requests="1100" Interval="59000" /> 
+  <MDSourceIps>51.89.153.203,51.89.144.114</MDSourceIps> 
+
+<FullLogs>false</FullLogs>
+  <SafeMode>
+    <ExecutionRPS Requests="2"   Interval="1500" />
+    <RequestRPS   Requests="600" Interval="60000" />
+    <Duration>1200000</Duration>
+    <Disable>true</Disable>
+  </SafeMode>
+<MDGlobalStale>15000</MDGlobalStale>
+<MDDefaultStale>30000</MDDefaultStale>
+
+  <Recovery Duration="60000" RequestInterval="5000" />
+  <BanMorInterval>900000</BanMorInterval>
+  <Accounts> 
+    <Account Name="BINrie16" ApiKey="2yEDx9w7hpP3FxVymTGupJ9XS67bJj1ResPjjHOxLMbyUUkvQw9Ash2PScG5qg1j" SecretKey="mr2xJw0L9xS9sZzGVJ8a83Eu4R1gDTUq1mKc0hF4FiJVJrn8uca1Nbb3EqwQY2ut" 
+             FillRatio="frbin"
+             PlacingCount="pc1bin"
+             PlacedCount="pc2bin"
+             Sent24H="s24bin"
+             SourceWsIp="51.89.153.203"
+             SourceIps="51.89.153.203,51.89.144.114"
+             Threshold24H="199000"> 
+	<ExecutionRPS Requests="9"   Interval="1000" /> <!-- max: 25/sec 200k/day -->
+   </Account>
+  </Accounts>
+<MultiAccSelector Debug="false" DisbalancePercent="30" Sent24Threshold="20" />
+
+  <VirtualAccounts>
+     <VirtualAccount Name="BINrie16PK" RealAccount="BINrie16"/>
+  </VirtualAccounts>
+
+<TradeRules Moratorium="500">
+  <UFR  TriggerValue="0.997" TriggerCondition="275" CalculatingCycle="600000" />
+  <IFER TriggerValue="0.97"  TriggerCondition="125" CalculatingCycle="600000" />
+  <GCR  TriggerValue="0.9"  TriggerCondition="125" CalculatingCycle="600000" />
+  <Indicators>
+   
+  </Indicators>
+</TradeRules>
+
+
+
+<BooksCompact>
+	<Rule Currency="BTC" MinSize="0.005" />
+	<Rule Currency="USD" MinSize="50" />
+</BooksCompact>
+
+  <Instruments>
+    <Instrument Name="ADABTC"   xBase="ADA"     xQuote="BTC" LotSize="1"/>
+    <Instrument Name="ADAUSDT"  xBase="ADA"     xQuote="USD" LotSize="1e-2"/> 
+    <Instrument Name="BTCUSDT"  xBase="BTC"     xQuote="USD" LotSize="1e-06"/>
+    <Instrument Name="ETHBTC"   xBase="ETH"     xQuote="BTC" LotSize="0.001"/>
+    <Instrument Name="ETHUSDT"  xBase="ETH"     xQuote="USD" LotSize="1e-05"/>
+    <Instrument Name="LTCUSDT"  xBase="LTC"     xQuote="USD" LotSize="1e-05"/>
+    <Instrument Name="LTCBTC"   xBase="LTC"     xQuote="BTC" LotSize="0.01"/>
+    <Instrument Name="XRPBTC"   xBase="XRP"     xQuote="BTC" LotSize="1"/>
+    <Instrument Name="XRPUSDT"  xBase="XRP"     xQuote="USD" LotSize="0.1" />
+    <Instrument Name="XMRBTC"   xBase="XMR"     xQuote="BTC" LotSize="0.001"/>
+    <Instrument Name="XMRUSDT"   xBase="XMR"     xQuote="USD" LotSize="1e-5"/>
+    <Instrument Name="DASHBTC"  xBase="DASH"    xQuote="BTC" LotSize="0.001"/>
+    <Instrument Name="DASHUSDT" xBase="DASH" xQuote="USD" LotSize="1e-05" />
+    <Instrument Name="EOSBTC"   xBase="EOS"     xQuote="BTC" LotSize="0.01"/>
+    <Instrument Name="EOSETH"   xBase="EOS"     xQuote="ETH" LotSize="0.01"/>
+    <Instrument Name="EOSUSDT"  xBase="EOS"     xQuote="USD" LotSize="1e-2" />   <!-- pointPrice = 1e-2, minOrderSize=10 USD, priceStep=0.0001 -->
+    <Instrument Name="TRXUSDT"  xBase="TRX"     xQuote="USD" LotSize="0.1" />   <!-- pointPrice = 1e-1, minOrderSize=10 USD, priceStep=0.00001 -->
+    <Instrument Name="TRXBTC" xBase="TRX" xQuote="BTC" LotSize="1" />
+    <Instrument Name="BCHABCBTC"   xBase="BCHABC"     xQuote="BTC" LotSize="0.001"/>
+    <Instrument Name="BCHABCUSDT"  xBase="BCHABC"     xQuote="USD" LotSize="1e-05"/>
+    <Instrument Name="ZECBTC" xBase="ZEC" xQuote="BTC" LotSize="0.001" />
+    <Instrument Name="ZECUSDT" xBase="ZEC" xQuote="USD" LotSize="1e-5" />
+    <Instrument Name="BNBUSDT" xBase="BNB" xQuote="USD" LotSize="0.01" />
+    <Instrument Name="BNBBTC" xBase="BNB" xQuote="BTC" LotSize="0.01" />
+    <Instrument Name="DOGEUSDT" xBase="DOGE" xQuote="USD" LotSize="1" />
+    <Instrument Name="DOGEBTC" xBase="DOGE" xQuote="BTC" LotSize="1" />
+    <Instrument Name="IOSTBTC" LotSize="1"/>
+    <Instrument Name="IOSTUSDT" LotSize="1" />
+    <Instrument Name="LINKUSDT" LotSize="0.01" />
+    <Instrument Name="LINKBTC" LotSize="1" />
+    <Instrument Name="BTCUSDC" LotSize="1e-06" />
+    <Instrument Name="ONTBTC" LotSize="0.01" />
+    <Instrument Name="ONTUSDT" LotSize="0.01" />
+    <Instrument Name="XLMBTC"   xBase="XLM"     xQuote="BTC" LotSize="1"/>
+    <Instrument Name="XLMUSDT" xBase="XLM"      xQuote="USD" LotSize="0.1" />
+    <Instrument Name="ETCBTC"   xBase="ETC"     xQuote="BTC" LotSize="0.01" />
+    <Instrument Name="ETCUSDT"  xBase="ETC"     xQuote="USD" LotSize="0.01" />
+    <Instrument Name="BTCBUSD" LotSize="1e-06" />
+  </Instruments>
+
+  <CurrencyAliases>
+    <xAlias ExchangeName="USDT" BalanceName="USD"/> 
+  </CurrencyAliases>
+
+  <Balances Threshold="1e-4" MismatchDuration="60000">
+    <Currency Name="USD"  Threshold="5" />
+    <Currency Name="ADA"  Threshold="20" />
+    <Currency Name="BCHABC"  Threshold="0.005" />
+    <Currency Name="BTC"  Threshold="0.001" />
+    <Currency Name="EOS"  Threshold="0.5" />
+    <Currency Name="ETC"  Threshold="0.1" />
+    <Currency Name="ETH"  Threshold="0.01" />
+    <Currency Name="LTC"  Threshold="0.02" />
+    <Currency Name="NEO"  Threshold="0.1" />
+    <Currency Name="QTUM" Threshold="0.1" />
+    <Currency Name="TRX"  Threshold="50" />
+    <Currency Name="XMR"  Threshold="0.05" />
+    <Currency Name="XRP"  Threshold="5" />
+  </Balances>
+
+<!--
+  <HistoryDir>/srv/history</HistoryDir> 
+  <HistoryDirectory>/srv/history</HistoryDirectory> 
+-->
+</BinanceConfig>
+
+name: HitBTC.PROD, config: <HitBTCConfig>
+
+   <RPS Interval="1000" Requests="600" />
+
+  <AutoRestartDelay>40000</AutoRestartDelay>
+  <AutoStart>true</AutoStart>
+
+   <TimedEvents>
+      <Event Moment="00:00:00" Type="Start" /> 
+      <Event Moment="9999932:59:30" Type="Stop" />
+   </TimedEvents>
+
+  <ExecutionDelays>
+    <AddDelay>TND1HITAdd</AddDelay>
+    <ModDelay>TND1HITMod</ModDelay>
+    <DelDelay>TND1HITDel</DelDelay>
+    <WriteSensors>true</WriteSensors>
+    <Counters>true</Counters>
+    <MaxActions>500</MaxActions>
+  </ExecutionDelays>
+
+<MarketDataPool>
+<Host>10.197.5.44</Host>
+<Secondary>10.197.5.45,10.197.5.92,10.197.5.93</Secondary>
+</MarketDataPool>
+
+<ExecutionPool>
+<Host>10.197.5.44</Host>
+<Secondary>10.197.5.45,10.197.5.92,10.197.5.93</Secondary>
+</ExecutionPool> 
+
+  <PosTransferActions> </PosTransferActions>
+
+  <CurrencyAliases>
+    <Alias BalanceName="BCH" ExchangeName="BCCF" />
+    <Alias BalanceName="XRP" ExchangeName="XRP2" />
+    <Alias BalanceName="GUSD" ExchangeName="GUSD1" />
+    <Alias BalanceName="USDT" ExchangeName="USD" />
+  </CurrencyAliases> 
+
+<!--mm23-->
+  <MarketDataLogin Password="X0XnkV7KGsMXhym" Port="4501" SenderCompID="login_3536369" TargetCompID="ME" Username="user_3536369" /> -->
+
+    <Fees>
+        <Fee Account="HITrie11" FeeRule="FromQuote" TakerPercentFee="0.02" MakerPercentFee="-0.01" />
+    </Fees>
+
+ <Accounts> 
+        <Account ApiKey="uStutUgjztfYzvOrJ0m48nXSvMPROF8-" ApiSecret="t7hCvOQjHoyVAnqDcamar67ci-UUCAyr" ExchangeAccount="account_3467175" Name="HITrie11" PartyID="user_3467175">
+            <Logins>
+                <Login Password="PUOV6TmN3s8dhba" Port="4500" SenderCompID="login_3467175" TargetCompID="ME" Username="user_3467175" />
+            </Logins>
+        </Account>
+ </Accounts>
+
+  <VirtualAccounts>
+    <VirtualAccount Name="HITrie11PK" RealAccount="HITrie11" />
+  </VirtualAccounts>
+
+  <Instruments>
+    <Instrument Base="BTC" Quote="USDT" Name="BTCUSD" PointPrice="1e-08" PriceHint="1000000" PriceStep="0.01" RealPointPrice="1e-05" SizeHint="100000000"/>
+
+  </Instruments>
+
+
+</HitBTCConfig>
+name: ArbMasterWN2M.TTAMv1-BTCUSDTconfig: <ArbMasterWN2MConfig>
+  <Debug>false</Debug>
+  <AutoStart AfterGateways="HitBTC.PROD,Binance.PROD" />
+  <Strategy>ARB.AMW.BTCUSD.BTCUSDT.HitBTC-Binance.PROD.PK</Strategy>
+  
+  <TimedEvents>
+    <Event Moment="00:00:00" Type="Start" /> 
+    <Event Moment="9999932:59:10" Type="Stop" />  
+  </TimedEvents>
+
+  <LocalFees>
+    <Fee Name=".+" Gateway="HitBTC.PROD" FeeRule="FromQuote" TakerPercentFee="0.02" MakerPercentFee="-0.01"/>
+    <Fee Name=".+" Gateway="Binance.PROD" FeeRule="FromQuote" TakerPercentFee="0.0375" MakerPercentFee="0.0"/>
+  </LocalFees>
+
+  <PNL Multiday="true">
+    <Components>
+      <Component Isin="HITrie11PK|BTCUSD||HitBTC.PROD" Hint="quote"/>
+      <Component Isin="BINrie16PK|BTCUSDT||Binance.PROD" Hint="quote"/>
+    </Components>
+    <Continue>true</Continue>
+    <MaxLossBalances>300</MaxLossBalances>
+    <StopLossBalances>900</StopLossBalances>
+    <MaxLossStrict>true</MaxLossStrict>
+    <Currency>USDT</Currency>
+    <BalancesPnl>pnBTCUSDbc</BalancesPnl>
+  </PNL>
+  
+  <ConvertRates>
+    <Rate From="BTC" To="USDT" Value="quote"/>
+    <Rate From="BNB" To="USDT" Value="BOOK(BNBUSDT||Binance.PROD,100)"/>
+  </ConvertRates>
+
+  <Variables>
+    <Variable Name="quote" Value="book(BTCUSDT||Binance.PROD, 1)" Public="true" Monitor="true"/>
+    <Variable Name="BTCUSDfee" Value="0.045*0.01*quote" Public="true" Monitor="true"/>
+    <Variable Name="BTCUSDoff" Value="BTCUSDfee+0.0+0.001*quote" Public="true" Monitor="true"/>
+    <Variable Name="eba1BTCh" Value="EB(HITrie11PK|HitBTC.PROD|BTC)" Public="true" Monitor="true"/>
+    <Variable Name="eba2BTCb" Value="EB(BINrie16PK|Binance.PROD|BTC)" Public="true" Monitor="true"/>
+    <Variable Name="eba1USDh" Value="EB(HITrie11PK|HitBTC.PROD|USDT)" Public="true" Monitor="true"/>
+    <Variable Name="eba2USDb" Value="EB(BINrie16PK|Binance.PROD|USDT)" Public="true" Monitor="true"/>
+    <Variable Name="tgsBTCUSD1" Value="IF(15000 > MIN(eba1BTCh*quote, eba2BTCb*quote, eba1USDh, eba2USDb), 1, 0)" Public="true" Monitor="true"/>
+    <Variable Name="btcusdeoff" Value="IF(tgsBTCUSD1, NA, BTCUSDoff)" Public="false" Monitor="false"/>
+    <Variable Name="expoBTCUSD" Value="RB(BTC)" Public="true" Monitor="true"/>
+
+  </Variables>
+
+  <Axes>
+    <Axis>
+      BOOK(BTCUSDT||Binance.PROD,1)
+      <Account>
+        <Name>BINrie16PK</Name>
+        <ExchangeName>Binance.PROD</ExchangeName>
+      </Account>
+      <Id>bc</Id>
+      <ConvertSize>THIS</ConvertSize>
+      <MaxPosition>9.5</MaxPosition>   <!--formula; coins -->
+      <MinOrderSize Technical="0.002" Hedging="0.002" Quoting="0.002"/>    <!-- In lots of this axis =1 XMR ~0,01 BTC-->
+      <HitFactor>1.5</HitFactor>      <!-- Cumulative support is multipplied by Hit Factor -->
+      <HitOffset>0</HitOffset>        <!-- This absolute value is added to the price of a hedging order -->
+      <TWAPHedge>
+        <MaxExposure>0.5</MaxExposure>  <!--formula; coins -->
+        <HedgeRatio>0.6</HedgeRatio>  <!-- formula-->
+        <FirstHedgeDelay>1</FirstHedgeDelay> <!-- double; ms--> 
+        <IntervalMin>1500</IntervalMin>  <!-- double; ms--> 
+        <IntervalMax>2000</IntervalMax>  <!-- double; ms--> 
+        <MaxSize>1.0</MaxSize>  <!-- formula; coins--> 
+        <MaxHitDepth>0.01</MaxHitDepth>  <!-- formula; parts--> 
+        <MaxSpread>0.01</MaxSpread>  <!-- formula; parts--> 
+      </TWAPHedge>
+
+      <TWFLHedge>
+        <MaxExposure>0.1</MaxExposure>  <!-- formula;coins -->
+        <HedgeRatio>0.6</HedgeRatio>  <!-- formula-->
+        <FirstHedgeDelayFormula>1</FirstHedgeDelayFormula> <!-- formula; ms--> 
+        <LevelsNum>1</LevelsNum>  <!-- double; --> 
+        <Distribution>1</Distribution>  <!-- double-->
+        <Offset>0.03</Offset> <!-- double; abs values--> 
+        <MPSOffset>0.001*quote</MPSOffset> <!-- double; abs values-->  
+        <RecalculateTime>4000</RecalculateTime>  <!-- formula; ms--> 
+      </TWFLHedge>
+
+      <Schedule>
+        <Interval Start="00:00:10.000" End="32:59:10.000" />
+      </Schedule>
+      <CanBalanceLimit>true</CanBalanceLimit>
+      <CanBalance>true</CanBalance>
+
+      <OrderAskInd>BTCUSDcbca</OrderAskInd> <!--formula;  -->
+      <OrderBidInd>BTCUSDcbcb</OrderBidInd> <!--formula;  -->
+    </Axis>
+    <Axis>
+      BOOK(BTCUSD||HitBTC.PROD,1)
+      <Account>
+        <Name>HITrie11PK</Name>
+        <ExchangeName>HitBTC.PROD</ExchangeName>
+      </Account>
+      <Id>h</Id>
+      <MaxPosition>9.5</MaxPosition>  <!--formula; lots -->
+      <HitFactor>1.5</HitFactor>
+      <FairSpread>0</FairSpread><!-- formula; abs values-->
+      <PriceOffset>0</PriceOffset>  <!-- formula; abs values-->
+      <MinOrderSize Technical="0" Quoting="0" Hedging="0"/> <!-- double; lots-->
+      <Schedule>
+        <Interval Start="00:00:10.000" End="32:59:10.000" />
+      </Schedule>
+      <CanBalance>false</CanBalance>
+      <CanBalanceLimit>false</CanBalanceLimit>
+      <SupportedBy>bc</SupportedBy>
+      <Levels>
+        <!-- Limit levels-->  
+        <Level Size="-0.1" SupportRate="1" BanMarket="false" RunAway="false" MinPriceStep="btcusdeoff*0.1" PriceOffset="btcusdeoff" DMD="10000" ConfineMarket="1" MonitorPriceSTM="lBTCUSDa"/>
+        <!-- Limit levels--> 
+        <Level Size="+0.1" SupportRate="1" BanMarket="false" RunAway="false" MinPriceStep="btcusdeoff*0.1" PriceOffset="btcusdeoff" DMD="10000" ConfineMarket="1" MonitorPriceSTM="lBTCUSDb"/>
+      </Levels>
+    </Axis>
+  </Axes>
+</ArbMasterWN2MConfig>
+
+name: ArbMasterWN2M.TTAMv1-BTCUSDT, config: <ArbMasterWN2MConfig>
+  <Debug>false</Debug>
+  <AutoStart AfterGateways="HitBTC.PROD,Binance.PROD" />
+  <Strategy>ARB.AMW.BTCUSD.BTCUSDT.HitBTC-Binance.PROD.PK</Strategy>
+  
+  <TimedEvents>
+    <Event Moment="00:00:00" Type="Start" /> 
+    <Event Moment="9999932:59:10" Type="Stop" />  
+  </TimedEvents>
+
+  <LocalFees>
+    <Fee Name=".+" Gateway="HitBTC.PROD" FeeRule="FromQuote" TakerPercentFee="0.02" MakerPercentFee="-0.01"/>
+    <Fee Name=".+" Gateway="Binance.PROD" FeeRule="FromQuote" TakerPercentFee="0.0375" MakerPercentFee="0.0"/>
+  </LocalFees>
+
+  <PNL Multiday="true">
+    <Components>
+      <Component Isin="HITrie11PK|BTCUSD||HitBTC.PROD" Hint="quote"/>
+      <Component Isin="BINrie16PK|BTCUSDT||Binance.PROD" Hint="quote"/>
+    </Components>
+    <Continue>true</Continue>
+    <MaxLossBalances>300</MaxLossBalances>
+    <StopLossBalances>900</StopLossBalances>
+    <MaxLossStrict>true</MaxLossStrict>
+    <Currency>USDT</Currency>
+    <BalancesPnl>pnBTCUSDbc</BalancesPnl>
+  </PNL>
+  
+  <ConvertRates>
+    <Rate From="BTC" To="USDT" Value="quote"/>
+    <Rate From="BNB" To="USDT" Value="BOOK(BNBUSDT||Binance.PROD,100)"/>
+  </ConvertRates>
+
+  <Variables>
+    <Variable Name="quote" Value="book(BTCUSDT||Binance.PROD, 1)" Public="true" Monitor="true"/>
+    <Variable Name="BTCUSDfee" Value="0.045*0.01*quote" Public="true" Monitor="true"/>
+    <Variable Name="BTCUSDoff" Value="BTCUSDfee+0.0+0.001*quote" Public="true" Monitor="true"/>
+    <Variable Name="eba1BTCh" Value="EB(HITrie11PK|HitBTC.PROD|BTC)" Public="true" Monitor="true"/>
+    <Variable Name="eba2BTCb" Value="EB(BINrie16PK|Binance.PROD|BTC)" Public="true" Monitor="true"/>
+    <Variable Name="eba1USDh" Value="EB(HITrie11PK|HitBTC.PROD|USDT)" Public="true" Monitor="true"/>
+    <Variable Name="eba2USDb" Value="EB(BINrie16PK|Binance.PROD|USDT)" Public="true" Monitor="true"/>
+    <Variable Name="tgsBTCUSD1" Value="IF(15000 > MIN(eba1BTCh*quote, eba2BTCb*quote, eba1USDh, eba2USDb), 1, 0)" Public="true" Monitor="true"/>
+    <Variable Name="btcusdeoff" Value="IF(tgsBTCUSD1, NA, BTCUSDoff)" Public="false" Monitor="false"/>
+    <Variable Name="expoBTCUSD" Value="RB(BTC)" Public="true" Monitor="true"/>
+
+  </Variables>
+
+  <Axes>
+    <Axis>
+      BOOK(BTCUSDT||Binance.PROD,1)
+      <Account>
+        <Name>BINrie16PK</Name>
+        <ExchangeName>Binance.PROD</ExchangeName>
+      </Account>
+      <Id>bc</Id>
+      <ConvertSize>THIS</ConvertSize>
+      <MaxPosition>9.5</MaxPosition>   <!--formula; coins -->
+      <MinOrderSize Technical="0.002" Hedging="0.002" Quoting="0.002"/>    <!-- In lots of this axis =1 XMR ~0,01 BTC-->
+      <HitFactor>1.5</HitFactor>      <!-- Cumulative support is multipplied by Hit Factor -->
+      <HitOffset>0</HitOffset>        <!-- This absolute value is added to the price of a hedging order -->
+      <TWAPHedge>
+        <MaxExposure>0.5</MaxExposure>  <!--formula; coins -->
+        <HedgeRatio>0.6</HedgeRatio>  <!-- formula-->
+        <FirstHedgeDelay>1</FirstHedgeDelay> <!-- double; ms--> 
+        <IntervalMin>1500</IntervalMin>  <!-- double; ms--> 
+        <IntervalMax>2000</IntervalMax>  <!-- double; ms--> 
+        <MaxSize>1.0</MaxSize>  <!-- formula; coins--> 
+        <MaxHitDepth>0.01</MaxHitDepth>  <!-- formula; parts--> 
+        <MaxSpread>0.01</MaxSpread>  <!-- formula; parts--> 
+      </TWAPHedge>
+
+      <TWFLHedge>
+        <MaxExposure>0.1</MaxExposure>  <!-- formula;coins -->
+        <HedgeRatio>0.6</HedgeRatio>  <!-- formula-->
+        <FirstHedgeDelayFormula>1</FirstHedgeDelayFormula> <!-- formula; ms--> 
+        <LevelsNum>1</LevelsNum>  <!-- double; --> 
+        <Distribution>1</Distribution>  <!-- double-->
+        <Offset>0.03</Offset> <!-- double; abs values--> 
+        <MPSOffset>0.001*quote</MPSOffset> <!-- double; abs values-->  
+        <RecalculateTime>4000</RecalculateTime>  <!-- formula; ms--> 
+      </TWFLHedge>
+
+      <Schedule>
+        <Interval Start="00:00:10.000" End="32:59:10.000" />
+      </Schedule>
+      <CanBalanceLimit>true</CanBalanceLimit>
+      <CanBalance>true</CanBalance>
+
+      <OrderAskInd>BTCUSDcbca</OrderAskInd> <!--formula;  -->
+      <OrderBidInd>BTCUSDcbcb</OrderBidInd> <!--formula;  -->
+    </Axis>
+    <Axis>
+      BOOK(BTCUSD||HitBTC.PROD,1)
+      <Account>
+        <Name>HITrie11PK</Name>
+        <ExchangeName>HitBTC.PROD</ExchangeName>
+      </Account>
+      <Id>h</Id>
+      <MaxPosition>9.5</MaxPosition>  <!--formula; lots -->
+      <HitFactor>1.5</HitFactor>
+      <FairSpread>0</FairSpread><!-- formula; abs values-->
+      <PriceOffset>0</PriceOffset>  <!-- formula; abs values-->
+      <MinOrderSize Technical="0" Quoting="0" Hedging="0"/> <!-- double; lots-->
+      <Schedule>
+        <Interval Start="00:00:10.000" End="32:59:10.000" />
+      </Schedule>
+      <CanBalance>false</CanBalance>
+      <CanBalanceLimit>false</CanBalanceLimit>
+      <SupportedBy>bc</SupportedBy>
+      <Levels>
+        <!-- Limit levels-->  
+        <Level Size="-0.1" SupportRate="1" BanMarket="false" RunAway="false" MinPriceStep="btcusdeoff*0.1" PriceOffset="btcusdeoff" DMD="10000" ConfineMarket="1" MonitorPriceSTM="lBTCUSDa"/>
+        <!-- Limit levels--> 
+        <Level Size="+0.1" SupportRate="1" BanMarket="false" RunAway="false" MinPriceStep="btcusdeoff*0.1" PriceOffset="btcusdeoff" DMD="10000" ConfineMarket="1" MonitorPriceSTM="lBTCUSDb"/>
+      </Levels>
+    </Axis>
+  </Axes>
+</ArbMasterWN2MConfig>
+
